@@ -1,48 +1,63 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase";
 
-type ClickRequestBody = {
-  productId?: string;
-  categorySlug?: string;
-  purchaseUrl?: string;
-};
+function isUuid(value: unknown): value is string {
+  if (typeof value !== "string") return false;
 
-function isValidBody(body: ClickRequestBody): body is Required<ClickRequestBody> {
-  return (
-    typeof body.productId === "string" &&
-    body.productId.length > 0 &&
-    typeof body.categorySlug === "string" &&
-    body.categorySlug.length > 0 &&
-    typeof body.purchaseUrl === "string" &&
-    body.purchaseUrl.length > 0
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+    value
   );
 }
 
-export async function POST(request: Request) {
-  let body: ClickRequestBody;
-
+export async function POST(request: NextRequest) {
   try {
-    body = await request.json();
-  } catch {
+    const body = await request.json();
+
+    const productId = body.productId;
+    const categorySlug = body.categorySlug;
+    const purchaseUrl = body.purchaseUrl;
+
+    if (!categorySlug || !purchaseUrl) {
+      return NextResponse.json(
+        { ok: false, error: "Invalid request" },
+        { status: 400 }
+      );
+    }
+
+    const userAgent = request.headers.get("user-agent");
+    const referrer = request.headers.get("referer");
+
+    const { error } = await supabase.from("click_events").insert({
+      product_id: isUuid(productId) ? productId : null,
+      category_slug: categorySlug,
+      purchase_url: purchaseUrl,
+      user_agent: userAgent,
+      referrer,
+    });
+
+    if (error) {
+      console.error("[SUPABASE_CLICK_INSERT_ERROR]", error);
+
+      return NextResponse.json(
+        { ok: false, error: "Failed to save click event" },
+        { status: 500 }
+      );
+    }
+
+    console.log("[CLICK_EVENT_SAVED]", {
+      productId,
+      categorySlug,
+      purchaseUrl,
+      clickedAt: new Date().toISOString(),
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("[CLICK_EVENT_ERROR]", error);
+
     return NextResponse.json(
       { ok: false, error: "Invalid request" },
-      { status: 400 },
+      { status: 400 }
     );
   }
-
-  if (!isValidBody(body)) {
-    return NextResponse.json(
-      { ok: false, error: "Invalid request" },
-      { status: 400 },
-    );
-  }
-
-  const clickedAt = new Date().toISOString();
-
-  console.log("[CLICK_EVENT]");
-  console.log(`productId: ${body.productId}`);
-  console.log(`categorySlug: ${body.categorySlug}`);
-  console.log(`purchaseUrl: ${body.purchaseUrl}`);
-  console.log(`clickedAt: ${clickedAt}`);
-
-  return NextResponse.json({ ok: true });
 }
