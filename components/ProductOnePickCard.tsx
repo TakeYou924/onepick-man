@@ -50,6 +50,7 @@ export default function ProductOnePickCard({ product }: ProductOnePickCardProps)
           <div className="mt-10">
             <PurchaseButton
               productId={product.id}
+              categorySlug={product.categorySlug}
               purchaseUrl={product.purchaseUrl}
             />
           </div>
