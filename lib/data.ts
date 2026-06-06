@@ -2,6 +2,19 @@ import { supabase } from "./supabase";
 import type { Category } from "@/types/category";
 import type { Product } from "@/types/product";
 
+// Supabase categories 테이블에 status_label/short_line 컬럼이 추가되기 전까지
+// slug 기준으로 정적 매핑을 병합한다.
+const CATEGORY_META: Record<string, { statusLabel: string; shortLine: string }> = {
+  socks:          { statusLabel: "정착 완료",   shortLine: "매일 신는 건 이걸로" },
+  underwear:      { statusLabel: "재구매 중",   shortLine: "편한 건 오래 감" },
+  belt:           { statusLabel: "이걸로 끝",   shortLine: "튀지 않고 오래 쓰는 것" },
+  "lip-balm":     { statusLabel: "가방에 하나", shortLine: "겨울 전에 챙기는 것" },
+  pillow:         { statusLabel: "잠 잘 옴",    shortLine: "바꾸면 바로 느껴짐" },
+  "black-inner-tee": { statusLabel: "계속 입음", shortLine: "아무 옷 안에 받쳐 입기" },
+  towel:          { statusLabel: "계속 이거",   shortLine: "매일 쓰는 건 무난하게" },
+  slippers:       { statusLabel: "집에서 고정", shortLine: "집 안에서 계속 신는 것" },
+};
+
 export async function getCategories(): Promise<Category[]> {
   const { data, error } = await supabase
     .from("categories")
@@ -19,6 +32,7 @@ export async function getCategories(): Promise<Category[]> {
     slug: row.slug,
     emoji: row.emoji,
     description: row.description,
+    ...CATEGORY_META[row.slug],
   }));
 }
 
@@ -44,6 +58,7 @@ export async function getCategoryBySlug(
     slug: data.slug,
     emoji: data.emoji,
     description: data.description,
+    ...CATEGORY_META[data.slug],
   };
 }
 

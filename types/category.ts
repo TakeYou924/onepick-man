@@ -4,4 +4,6 @@ export type Category = {
   slug: string;
   emoji: string;
   description: string;
+  statusLabel?: string;
+  shortLine?: string;
 };

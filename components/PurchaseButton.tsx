@@ -51,7 +51,7 @@ export default function PurchaseButton({
         "이동 중..."
       ) : (
         <>
-          최저가 확인하러 가기
+          이걸로 끝내기
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="15"

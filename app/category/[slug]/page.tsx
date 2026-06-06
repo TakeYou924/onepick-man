@@ -63,7 +63,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* 제품 카드 */}
         <div className="mt-8">
           {product ? (
-            <ProductOnePickCard product={product} />
+            <ProductOnePickCard product={product} categoryName={category.name} />
           ) : (
             <div className="rounded-3xl bg-white px-8 py-20 text-center shadow-sm ring-1 ring-zinc-200/60">
               <p className="text-zinc-400">아직 등록된 원픽 제품이 없습니다.</p>
