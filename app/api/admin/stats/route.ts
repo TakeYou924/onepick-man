@@ -20,9 +20,18 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const { data, error } = await supabase
+  const { data, error, count } = await supabase
     .from("click_events")
-    .select("category_slug, product_id, purchase_url, clicked_at");
+    .select("category_slug, product_id, purchase_url, clicked_at", {
+      count: "exact",
+    });
+
+  console.log("[ADMIN_STATS_DEBUG]", {
+    rowCount: data?.length,
+    dbCount: count,
+    error: error ?? null,
+    firstRow: data?.[0] ?? null,
+  });
 
   if (error) {
     console.error("[ADMIN_STATS_ERROR]", error);

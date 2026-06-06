@@ -1,7 +1,9 @@
 import CategoryCard from "@/components/CategoryCard";
-import { categories } from "@/lib/mockData";
+import { getCategories } from "@/lib/data";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await getCategories();
+
   return (
     <main className="flex-1 bg-zinc-100">
       <section className="mx-auto max-w-5xl px-6 py-20 text-center sm:py-28">
@@ -13,7 +15,7 @@ export default function Home() {
         </p>
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => (
-            <CategoryCard key={category.id} category={category} />
+            <CategoryCard key={category.slug} category={category} />
           ))}
         </div>
       </section>

@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import ProductOnePickCard from "@/components/ProductOnePickCard";
 import {
   getCategoryBySlug,
-  getProductByCategorySlug,
-} from "@/lib/mockData";
+  getActiveProductByCategorySlug,
+} from "@/lib/data";
 
 type CategoryPageProps = {
   params: Promise<{ slug: string }>;
@@ -12,10 +12,13 @@ type CategoryPageProps = {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
-  const category = getCategoryBySlug(slug);
-  const product = getProductByCategorySlug(slug);
 
-  if (!category || !product) {
+  const [category, product] = await Promise.all([
+    getCategoryBySlug(slug),
+    getActiveProductByCategorySlug(slug),
+  ]);
+
+  if (!category) {
     notFound();
   }
 
@@ -38,7 +41,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <p className="mt-3 text-zinc-500">{category.description}</p>
         </div>
         <div className="mt-12">
-          <ProductOnePickCard product={product} />
+          {product ? (
+            <ProductOnePickCard product={product} />
+          ) : (
+            <p className="text-center text-zinc-400">
+              아직 등록된 원픽 제품이 없습니다.
+            </p>
+          )}
         </div>
       </section>
     </main>
