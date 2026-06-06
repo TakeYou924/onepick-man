@@ -24,29 +24,50 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main className="flex-1 bg-zinc-100">
-      <section className="mx-auto max-w-5xl px-6 py-12 sm:py-20">
+      <section className="mx-auto max-w-4xl px-6 py-10 sm:py-16">
+        {/* 브레드크럼 */}
         <Link
           href="/"
-          className="text-sm text-zinc-500 transition-colors hover:text-zinc-900"
+          className="inline-flex items-center gap-1.5 text-sm text-zinc-400 transition-colors hover:text-zinc-900"
         >
-          ← 카테고리 목록
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          전체 카테고리
         </Link>
-        <div className="mt-8 text-center">
-          <span className="text-4xl" role="img" aria-label={category.name}>
-            {category.emoji}
-          </span>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-            {category.name}
-          </h1>
-          <p className="mt-3 text-zinc-500">{category.description}</p>
+
+        {/* 카테고리 헤더 */}
+        <div className="mt-8">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl" role="img" aria-label={category.name}>
+              {category.emoji}
+            </span>
+            <h1 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
+              {category.name}
+            </h1>
+          </div>
+          <p className="mt-2 text-sm text-zinc-400">{category.description}</p>
         </div>
-        <div className="mt-12">
+
+        {/* 제품 카드 */}
+        <div className="mt-8">
           {product ? (
             <ProductOnePickCard product={product} />
           ) : (
-            <p className="text-center text-zinc-400">
-              아직 등록된 원픽 제품이 없습니다.
-            </p>
+            <div className="rounded-3xl bg-white px-8 py-20 text-center shadow-sm ring-1 ring-zinc-200/60">
+              <p className="text-zinc-400">아직 등록된 원픽 제품이 없습니다.</p>
+            </div>
           )}
         </div>
       </section>
