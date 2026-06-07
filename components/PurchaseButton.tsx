@@ -1,41 +1,65 @@
 "use client";
 
 import { useState } from "react";
+import {
+  getOrCreateSessionId,
+  getDeviceType,
+  getUtmParams,
+  getReferrer,
+  getDestinationType,
+} from "@/lib/tracking";
 
 type PurchaseButtonProps = {
   productId: string;
   categorySlug: string;
   purchaseUrl: string;
+  affiliateUrl?: string;
 };
 
 export default function PurchaseButton({
   productId,
   categorySlug,
   purchaseUrl,
+  affiliateUrl,
 }: PurchaseButtonProps) {
   const [loading, setLoading] = useState(false);
 
+  const targetUrl = affiliateUrl ?? purchaseUrl;
+
   async function handleClick() {
     if (loading) return;
-
     setLoading(true);
 
     try {
+      const sessionId = getOrCreateSessionId();
+      const deviceType = getDeviceType();
+      const utmParams = getUtmParams();
+      const referrer = getReferrer();
+      const destinationType = getDestinationType(targetUrl);
+
       await fetch("/api/click", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           productId,
           categorySlug,
-          purchaseUrl,
+          purchaseUrl: targetUrl,
+          sessionId,
+          eventType: "affiliate_click",
+          destinationType,
+          destinationUrl: targetUrl,
+          linkLabel: "이걸로 정착하기",
+          referrer,
+          utmSource: utmParams.utmSource,
+          utmMedium: utmParams.utmMedium,
+          utmCampaign: utmParams.utmCampaign,
+          deviceType,
         }),
       });
     } catch {
       // API 실패해도 구매 링크 이동은 계속 진행
     } finally {
-      window.open(purchaseUrl, "_blank", "noopener,noreferrer");
+      window.open(targetUrl, "_blank", "noopener,noreferrer");
       setLoading(false);
     }
   }
@@ -51,7 +75,7 @@ export default function PurchaseButton({
         "이동 중..."
       ) : (
         <>
-          이걸로 끝내기
+          이걸로 정착하기
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="15"

@@ -6,4 +6,5 @@ export type Category = {
   description: string;
   statusLabel?: string;
   shortLine?: string;
+  isReady?: boolean;
 };

@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+
+const ADMIN_PW_KEY = "opman_admin_pw";
 
 interface CategoryStat {
   slug: string;
@@ -44,6 +47,7 @@ export default function AdminPage() {
       }
 
       setStats(json.stats);
+      sessionStorage.setItem(ADMIN_PW_KEY, password);
     } catch {
       setError("서버에 연결할 수 없습니다.");
     } finally {
@@ -63,11 +67,28 @@ export default function AdminPage() {
               onClick={() => {
                 setStats(null);
                 setPassword("");
+                sessionStorage.removeItem(ADMIN_PW_KEY);
               }}
               className="text-sm text-zinc-400 hover:text-zinc-600"
             >
               로그아웃
             </button>
+          </div>
+
+          {/* 관리자 메뉴 */}
+          <div className="mt-4 flex gap-3">
+            <Link
+              href="/admin/analytics"
+              className="rounded-xl bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm ring-1 ring-zinc-200/60 hover:bg-zinc-50"
+            >
+              분석 대시보드 →
+            </Link>
+            <Link
+              href="/admin/reports"
+              className="rounded-xl bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm ring-1 ring-zinc-200/60 hover:bg-zinc-50"
+            >
+              기업 제안 리포트 →
+            </Link>
           </div>
 
           {/* 총 클릭 수 */}

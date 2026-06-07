@@ -6,6 +6,15 @@ export type Product = {
   price: number;
   imageUrl: string;
   purchaseUrl: string;
+  affiliateUrl?: string;
+  originalUrl?: string;
   summary: string;
   reasons: string[];
+  recommendedFor?: string[];
+  notRecommendedFor?: string[];
+  priceRange?: string;
+  purchasePlace?: string;
+  isSponsored?: boolean;
+  sponsorshipLabel?: string;
+  lastCheckedAt?: string;
 };

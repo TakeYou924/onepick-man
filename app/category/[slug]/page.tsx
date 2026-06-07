@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductOnePickCard from "@/components/ProductOnePickCard";
+import ViewTracker from "@/components/ViewTracker";
 import {
   getCategoryBySlug,
   getActiveProductByCategorySlug,
@@ -24,6 +25,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main className="flex-1 bg-zinc-100">
+      <ViewTracker
+        categoryId={category.slug}
+        productId={product?.id}
+        pageType="product"
+      />
       <section className="mx-auto max-w-4xl px-6 py-10 sm:py-16">
         {/* 브레드크럼 */}
         <Link

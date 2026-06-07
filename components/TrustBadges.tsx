@@ -1,4 +1,4 @@
-const badges = ["직접 써봄", "광고 없음", "카테고리별 하나"];
+const badges = ["기준 선별", "협찬 별도 표기", "카테고리별 하나"];
 
 export default function TrustBadges() {
   return (
