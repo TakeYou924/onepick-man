@@ -11,6 +11,7 @@ type CategoryMeta = {
 
 // Supabase categories 테이블에 없는 필드를 slug 기준으로 정적으로 병합한다.
 // description은 Supabase 값보다 이 값을 우선 사용한다.
+// 아이콘은 components/CategoryIcon.tsx에서 slug 기준으로 렌더링한다.
 const CATEGORY_META: Record<string, CategoryMeta> = {
   socks: {
     statusLabel: "정착 완료", shortLine: "매일 신는 건 이걸로",
@@ -26,23 +27,24 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
   },
   towel: {
     statusLabel: "계속 이거", shortLine: "매일 쓰는 건 무난하게",
-    description: "막 쓰기 좋은 기본 수건", isReady: true,
+    description: "부드럽고 도톰한 호텔식 기본 타월", isReady: true,
   },
   slippers: {
-    statusLabel: "집에서 고정", shortLine: "집 안에서 계속 신는 것",
-    description: "집에서 하루 종일 신기 좋은 실내화", isReady: true,
+    statusLabel: "매일 신는 중", shortLine: "어디서든 발 편한 것",
+    description: "사무실, 여행, 산책까지 발이 먼저 편한 데일리 슬리퍼",
+    isReady: true,
   },
   "white-tshirt": {
-    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
-    description: "이너·단독 모두 무난한 흰 티", isReady: false,
+    statusLabel: "이걸로 끝", shortLine: "이너·단독 다 되는 것",
+    description: "이너·단독 모두 무난한 흰 티", isReady: true,
   },
   razor: {
-    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
-    description: "매일 쓰기 좋은 기본 면도기", isReady: false,
+    statusLabel: "정착 완료", shortLine: "매일 쓰는 건 이걸로",
+    description: "매일 쓰기 좋은 기본 면도기", isReady: true,
   },
   umbrella: {
-    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
-    description: "가볍고 튼튼한 기본 우산", isReady: false,
+    statusLabel: "하나면 충분", shortLine: "가방에 하나면 끝",
+    description: "가볍고 휴대성 좋은 기본 우산", isReady: true,
   },
   "lip-balm": {
     statusLabel: "준비 중", shortLine: "곧 추가됩니다",
@@ -56,6 +58,22 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
     statusLabel: "준비 중", shortLine: "곧 추가됩니다",
     description: "아무 옷 안에 받쳐 입는 검정 이너티", isReady: false,
   },
+};
+
+// 카테고리별 제휴 링크. DB의 affiliate_url보다 우선 적용한다.
+const AFFILIATE_URLS: Record<string, string> = {
+  socks: "https://link.coupang.com/a/esyQVnY3Qy",
+  // TODO: replace with Coupang Partners link
+  underwear:
+    "https://www.coupang.com/vp/products/6617913651?itemId=15033764450&vendorItemId=87864344483&q=CK%EB%93%9C%EB%A1%9C%EC%A6%88&searchId=8c616a066619883&sourceType=search&itemsCount=36&searchRank=6&rank=6&traceId=mq7m1pqo",
+  belt: "https://link.coupang.com/a/esHwhDdeDs",
+  // TODO: replace with Coupang Partners link
+  "white-tshirt":
+    "https://www.coupang.com/vp/products/9328229657?itemId=27653636332&vendorItemId=94616032401&q=%EC%BB%AC%ED%81%AC%EB%9E%9C%EB%93%9C+%ED%8B%B0&searchId=b97c056e8137089&sourceType=search&itemsCount=36&searchRank=6&rank=6&traceId=mq7merxo",
+  razor: "https://link.coupang.com/a/esImRkGBIy",
+  towel: "https://link.coupang.com/a/esIBdR5T1U",
+  slippers: "https://link.coupang.com/a/esIEKvCVye",
+  umbrella: "https://link.coupang.com/a/esIQx6rkDA",
 };
 
 export async function getCategories(): Promise<Category[]> {
@@ -118,9 +136,7 @@ export async function getActiveProductByCategorySlug(
 ): Promise<Product | null> {
   const { data, error } = await supabase
     .from("products")
-    .select(
-      "id, category_slug, brand_name, product_name, price, image_url, purchase_url, summary, reasons"
-    )
+    .select("*")
     .eq("category_slug", slug)
     .eq("is_active", true)
     .limit(1)
@@ -141,7 +157,10 @@ export async function getActiveProductByCategorySlug(
     price: data.price ?? 0,
     imageUrl: data.image_url ?? "",
     purchaseUrl: data.purchase_url,
-    affiliateUrl: data.affiliate_url ?? data.purchase_url,
+    affiliateUrl:
+      AFFILIATE_URLS[data.category_slug] ??
+      data.affiliate_url ??
+      data.purchase_url,
     originalUrl: data.original_url ?? undefined,
     summary: data.summary ?? "",
     reasons: Array.isArray(data.reasons) ? data.reasons : [],

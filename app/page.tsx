@@ -15,7 +15,11 @@ export default async function Home() {
           하나씩만.
         </h1>
         <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-zinc-400">
-          매번 비교하기 싫은 남자를 위한 기본템 원픽.
+          &ldquo;쇼핑에 쓰는 시간이 아깝다.&rdquo;
+          <br />
+          &ldquo;대충 누가 사용감 좋고 가성비 좋은 제품
+          <br />
+          추천해주는거 고민 없이 사고 싶다.&rdquo;
         </p>
         <div className="mt-6">
           <TrustBadges />
@@ -49,8 +53,8 @@ export default async function Home() {
           <p className="mt-2 text-sm leading-relaxed text-zinc-400">
             양말, 속옷, 벨트 같은 생활템은 오래 비교할수록 피곤합니다.
             <br className="hidden sm:block" />
-            ONEPICK MAN은 무난함, 재구매성, 가격 부담, 접근성을 기준으로
-            카테고리별 하나만 남깁니다.
+            ONEPICK MAN은 착용감, 합리적 가격대, 깔끔함, 오래 쓸 수 있는
+            내구성을 기준으로 카테고리별 하나만 남깁니다.
           </p>
         </div>
       </section>

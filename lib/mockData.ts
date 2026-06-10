@@ -92,8 +92,8 @@ export const products: Product[] = [
     productName: "데일리 코튼 크루삭스 5족",
     price: 12900,
     imageUrl: "",
-    purchaseUrl: "https://example.com/socks",
-    affiliateUrl: "https://example.com/socks",
+    purchaseUrl: "https://link.coupang.com/a/esyQVnY3Qy",
+    affiliateUrl: "https://link.coupang.com/a/esyQVnY3Qy",
     summary: "색 튀지 않고, 세탁해도 늘어나지 않는 양말. 더 고민할 필요 없습니다.",
     reasons: [
       "무채색이라 어떤 신발에도 그냥 신을 수 있음",
@@ -120,8 +120,11 @@ export const products: Product[] = [
     productName: "코튼 드로즈 3매",
     price: 24900,
     imageUrl: "",
-    purchaseUrl: "https://example.com/underwear",
-    affiliateUrl: "https://example.com/underwear",
+    // TODO: replace with Coupang Partners link
+    purchaseUrl:
+      "https://www.coupang.com/vp/products/6617913651?itemId=15033764450&vendorItemId=87864344483&q=CK%EB%93%9C%EB%A1%9C%EC%A6%88&searchId=8c616a066619883&sourceType=search&itemsCount=36&searchRank=6&rank=6&traceId=mq7m1pqo",
+    affiliateUrl:
+      "https://www.coupang.com/vp/products/6617913651?itemId=15033764450&vendorItemId=87864344483&q=CK%EB%93%9C%EB%A1%9C%EC%A6%88&searchId=8c616a066619883&sourceType=search&itemsCount=36&searchRank=6&rank=6&traceId=mq7m1pqo",
     summary: "허리 밴드가 하루 종일 안 불편한 팬티. 면 소재라 피부 자극도 없습니다.",
     reasons: [
       "허리 밴드가 좁고 탄탄해서 흘러내리지 않음",
@@ -148,8 +151,8 @@ export const products: Product[] = [
     productName: "클래식 레더 벨트",
     price: 19900,
     imageUrl: "",
-    purchaseUrl: "https://example.com/belt",
-    affiliateUrl: "https://example.com/belt",
+    purchaseUrl: "https://link.coupang.com/a/esHwhDdeDs",
+    affiliateUrl: "https://link.coupang.com/a/esHwhDdeDs",
     summary: "정장에도, 청바지에도 튀지 않는 벨트. 버클이 작아서 어디에나 어울립니다.",
     reasons: [
       "버클 크기가 작아 캐주얼·포멀 모두 가능",
@@ -175,8 +178,8 @@ export const products: Product[] = [
     productName: "호텔 타월 2장",
     price: 21900,
     imageUrl: "",
-    purchaseUrl: "https://example.com/towel",
-    affiliateUrl: "https://example.com/towel",
+    purchaseUrl: "https://link.coupang.com/a/esIBdR5T1U",
+    affiliateUrl: "https://link.coupang.com/a/esIBdR5T1U",
     summary: "흡수는 되는데 금방 마르는 수건. 두꺼운 수건 특유의 냄새 문제가 없습니다.",
     reasons: [
       "얇지 않은데 건조 속도가 빠름",
@@ -202,8 +205,8 @@ export const products: Product[] = [
     productName: "메모리폼 실내화",
     price: 17900,
     imageUrl: "",
-    purchaseUrl: "https://example.com/slippers",
-    affiliateUrl: "https://example.com/slippers",
+    purchaseUrl: "https://link.coupang.com/a/esIEKvCVye",
+    affiliateUrl: "https://link.coupang.com/a/esIEKvCVye",
     summary: "발바닥이 눌리지 않고 오래 신을 수 있는 실내화. 바닥 소음도 거의 없습니다.",
     reasons: [
       "메모리폼 밑창이 발 피로를 줄여줌",

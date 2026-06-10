@@ -25,6 +25,8 @@ export default function PurchaseButton({
   const [loading, setLoading] = useState(false);
 
   const targetUrl = affiliateUrl ?? purchaseUrl;
+  const isCoupang = /coupang\.com/i.test(targetUrl);
+  const label = isCoupang ? "쿠팡에서 확인하기" : "이걸로 정착하기";
 
   async function handleClick() {
     if (loading) return;
@@ -48,7 +50,7 @@ export default function PurchaseButton({
           eventType: "affiliate_click",
           destinationType,
           destinationUrl: targetUrl,
-          linkLabel: "이걸로 정착하기",
+          linkLabel: label,
           referrer,
           utmSource: utmParams.utmSource,
           utmMedium: utmParams.utmMedium,
@@ -75,7 +77,7 @@ export default function PurchaseButton({
         "이동 중..."
       ) : (
         <>
-          이걸로 정착하기
+          {label}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="15"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CategoryIcon from "@/components/CategoryIcon";
 import ProductOnePickCard from "@/components/ProductOnePickCard";
 import ViewTracker from "@/components/ViewTracker";
 import {
@@ -56,8 +57,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* 카테고리 헤더 */}
         <div className="mt-8">
           <div className="flex items-center gap-3">
-            <span className="text-3xl" role="img" aria-label={category.name}>
-              {category.emoji}
+            <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white text-zinc-900 shadow-sm ring-1 ring-zinc-200/60">
+              <CategoryIcon slug={category.slug} className="h-6 w-6" />
             </span>
             <h1 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
               {category.name}

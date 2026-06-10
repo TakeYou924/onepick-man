@@ -229,10 +229,12 @@ export default function ProductOnePickCard({
           </div>
 
           {/* 제휴 링크 고지 */}
-          <p className="mt-5 text-[11px] leading-relaxed text-zinc-300">
+          <p className="mt-5 text-xs leading-relaxed text-zinc-500">
             {product.isSponsored && product.sponsorshipLabel
               ? `[협찬] ${product.sponsorshipLabel}`
-              : "이 페이지에는 제휴 링크가 포함될 수 있으며, 구매 시 ONEPICK MAN이 일정 수수료를 받을 수 있습니다. 원픽 선정 기준은 별도로 유지합니다."}
+              : /coupang\.com/i.test(product.affiliateUrl ?? product.purchaseUrl)
+                ? "이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
+                : "이 페이지에는 제휴 링크가 포함될 수 있으며, 구매 시 ONEPICK MAN이 일정 수수료를 받을 수 있습니다. 원픽 선정 기준은 별도로 유지합니다."}
           </p>
 
         </div>

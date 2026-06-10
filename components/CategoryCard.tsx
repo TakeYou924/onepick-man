@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Category } from "@/types/category";
+import CategoryIcon from "./CategoryIcon";
 
 type CategoryCardProps = {
   category: Category;
@@ -10,13 +11,13 @@ export default function CategoryCard({ category }: CategoryCardProps) {
 
   const inner = (
     <>
-      {/* 이모지 */}
+      {/* 아이콘 */}
       <span
-        className={`text-2xl ${isReady ? "" : "opacity-40"}`}
-        role="img"
-        aria-label={category.name}
+        className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 ${
+          isReady ? "" : "opacity-40"
+        }`}
       >
-        {category.emoji}
+        <CategoryIcon slug={category.slug} className="h-6 w-6" />
       </span>
 
       {/* 카테고리명 + statusLabel */}
