@@ -17,4 +17,5 @@ export type Product = {
   isSponsored?: boolean;
   sponsorshipLabel?: string;
   lastCheckedAt?: string;
+  selectionStoryUrl?: string;
 };
