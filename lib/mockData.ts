@@ -112,7 +112,6 @@ export const products: Product[] = [
     priceRange: "1만 원대",
     purchasePlace: "쿠팡 / 네이버 쇼핑",
     lastCheckedAt: "2026-06",
-    selectionStoryUrl: "https://www.naver.com",
   },
   {
     id: "p2",
@@ -144,7 +143,7 @@ export const products: Product[] = [
     priceRange: "2만 원대",
     purchasePlace: "쿠팡 / 올리브영",
     lastCheckedAt: "2026-06",
-    selectionStoryUrl: "https://www.naver.com",
+    selectionStoryUrl: "https://live0714.tistory.com/20",
   },
   {
     id: "p3",
@@ -172,7 +171,6 @@ export const products: Product[] = [
     priceRange: "1만 원대 후반",
     purchasePlace: "쿠팡 / 무신사",
     lastCheckedAt: "2026-05",
-    selectionStoryUrl: "https://www.naver.com",
   },
   {
     id: "p7",
@@ -200,7 +198,6 @@ export const products: Product[] = [
     priceRange: "2만 원대",
     purchasePlace: "쿠팡",
     lastCheckedAt: "2026-04",
-    selectionStoryUrl: "https://www.naver.com",
   },
   {
     id: "p8",
@@ -228,7 +225,6 @@ export const products: Product[] = [
     priceRange: "1만 원대",
     purchasePlace: "쿠팡 / 다이소",
     lastCheckedAt: "2026-05",
-    selectionStoryUrl: "https://www.naver.com",
   },
 ];
 

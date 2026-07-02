@@ -61,16 +61,9 @@ const CATEGORY_META: Record<string, CategoryMeta> = {
 };
 
 // 카테고리별 선별 과정 블로그 링크. DB의 selection_story_url보다 우선 적용한다.
-// TODO: 실제 블로그 글이 생기면 각 URL을 교체한다.
+// TODO: 다른 카테고리도 실제 블로그 글이 생기면 URL을 추가한다.
 const SELECTION_STORY_URLS: Record<string, string> = {
-  socks: "https://www.naver.com",
-  underwear: "https://www.naver.com",
-  belt: "https://www.naver.com",
-  towel: "https://www.naver.com",
-  slippers: "https://www.naver.com",
-  "white-tshirt": "https://www.naver.com",
-  razor: "https://www.naver.com",
-  umbrella: "https://www.naver.com",
+  underwear: "https://live0714.tistory.com/20",
 };
 
 // 카테고리별 제휴 링크. DB의 affiliate_url보다 우선 적용한다.
