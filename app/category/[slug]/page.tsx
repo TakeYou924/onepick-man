@@ -20,7 +20,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     getActiveProductByCategorySlug(slug),
   ]);
 
-  if (!category) {
+  if (!category || category.isReady === false) {
     notFound();
   }
 

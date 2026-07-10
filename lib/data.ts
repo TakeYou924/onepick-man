@@ -14,37 +14,37 @@ type CategoryMeta = {
 // 아이콘은 components/CategoryIcon.tsx에서 slug 기준으로 렌더링한다.
 const CATEGORY_META: Record<string, CategoryMeta> = {
   socks: {
-    statusLabel: "정착 완료", shortLine: "매일 신는 건 이걸로",
-    description: "매일 신는 기본 크루삭스", isReady: true,
+    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
+    description: "매일 신는 기본 크루삭스", isReady: false,
   },
   underwear: {
     statusLabel: "재구매 중", shortLine: "편한 건 오래 감",
     description: "편하고 오래 입는 기본 드로즈", isReady: true,
   },
   belt: {
-    statusLabel: "이걸로 끝", shortLine: "튀지 않고 오래 쓰는 것",
-    description: "정장·캐주얼 모두 되는 기본 벨트", isReady: true,
+    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
+    description: "정장·캐주얼 모두 되는 기본 벨트", isReady: false,
   },
   towel: {
-    statusLabel: "계속 이거", shortLine: "매일 쓰는 건 무난하게",
-    description: "부드럽고 도톰한 호텔식 기본 타월", isReady: true,
+    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
+    description: "부드럽고 도톰한 호텔식 기본 타월", isReady: false,
   },
   slippers: {
-    statusLabel: "매일 신는 중", shortLine: "어디서든 발 편한 것",
+    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
     description: "사무실, 여행, 산책까지 발이 먼저 편한 데일리 슬리퍼",
-    isReady: true,
+    isReady: false,
   },
   "white-tshirt": {
-    statusLabel: "이걸로 끝", shortLine: "이너·단독 다 되는 것",
-    description: "이너·단독 모두 무난한 흰 티", isReady: true,
+    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
+    description: "이너·단독 모두 무난한 흰 티", isReady: false,
   },
   razor: {
-    statusLabel: "정착 완료", shortLine: "매일 쓰는 건 이걸로",
-    description: "매일 쓰기 좋은 기본 면도기", isReady: true,
+    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
+    description: "매일 쓰기 좋은 기본 면도기", isReady: false,
   },
   umbrella: {
-    statusLabel: "하나면 충분", shortLine: "가방에 하나면 끝",
-    description: "가볍고 휴대성 좋은 기본 우산", isReady: true,
+    statusLabel: "준비 중", shortLine: "곧 추가됩니다",
+    description: "가볍고 휴대성 좋은 기본 우산", isReady: false,
   },
   "lip-balm": {
     statusLabel: "준비 중", shortLine: "곧 추가됩니다",
