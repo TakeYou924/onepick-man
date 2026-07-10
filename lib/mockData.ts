@@ -120,11 +120,10 @@ export const products: Product[] = [
     productName: "코튼 드로즈 3매",
     price: 24900,
     imageUrl: "",
-    // TODO: replace with Coupang Partners link
     purchaseUrl:
-      "https://www.coupang.com/vp/products/6617913651?itemId=15033764450&vendorItemId=87864344483&q=CK%EB%93%9C%EB%A1%9C%EC%A6%88&searchId=8c616a066619883&sourceType=search&itemsCount=36&searchRank=6&rank=6&traceId=mq7m1pqo",
+      "https://www.uniqlo.com/kr/ko/products/E482563-000/00?colorDisplayCode=09&sizeDisplayCode=005",
     affiliateUrl:
-      "https://www.coupang.com/vp/products/6617913651?itemId=15033764450&vendorItemId=87864344483&q=CK%EB%93%9C%EB%A1%9C%EC%A6%88&searchId=8c616a066619883&sourceType=search&itemsCount=36&searchRank=6&rank=6&traceId=mq7m1pqo",
+      "https://www.uniqlo.com/kr/ko/products/E482563-000/00?colorDisplayCode=09&sizeDisplayCode=005",
     summary: "허리 밴드가 하루 종일 안 불편한 팬티. 면 소재라 피부 자극도 없습니다.",
     reasons: [
       "허리 밴드가 좁고 탄탄해서 흘러내리지 않음",
@@ -141,7 +140,7 @@ export const products: Product[] = [
       "타이트한 핏을 좋아하는 사람",
     ],
     priceRange: "2만 원대",
-    purchasePlace: "쿠팡 / 올리브영",
+    purchasePlace: "유니클로",
     lastCheckedAt: "2026-06",
     selectionStoryUrl: "https://live0714.tistory.com/20",
   },

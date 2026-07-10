@@ -26,7 +26,7 @@ export default function PurchaseButton({
 
   const targetUrl = affiliateUrl ?? purchaseUrl;
   const isCoupang = /coupang\.com/i.test(targetUrl);
-  const label = isCoupang ? "쿠팡에서 확인하기" : "이걸로 정착하기";
+  const label = isCoupang ? "쿠팡에서 확인하기" : "지금 구매하기";
 
   async function handleClick() {
     if (loading) return;

@@ -71,7 +71,7 @@ const AFFILIATE_URLS: Record<string, string> = {
   socks: "https://link.coupang.com/a/esyQVnY3Qy",
   // TODO: replace with Coupang Partners link
   underwear:
-    "https://www.coupang.com/vp/products/6617913651?itemId=15033764450&vendorItemId=87864344483&q=CK%EB%93%9C%EB%A1%9C%EC%A6%88&searchId=8c616a066619883&sourceType=search&itemsCount=36&searchRank=6&rank=6&traceId=mq7m1pqo",
+    "https://www.uniqlo.com/kr/ko/products/E482563-000/00?colorDisplayCode=09&sizeDisplayCode=005",
   belt: "https://link.coupang.com/a/esHwhDdeDs",
   // TODO: replace with Coupang Partners link
   "white-tshirt":
